@@ -1,0 +1,20 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    active: git
+  # active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/adriangonzalez-code/eazyback-config.git
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+          basedir: file:///D:/configserver
+          search-paths: /Config Server/src/main/resources/config
