@@ -17,4 +17,6 @@ spring:
           clone-on-start: true
           force-pull: true
           basedir: file:///D:/configserver
-          search-paths: /Config Server/src/main/resources/config
+
+encrypt:
+  key: "SD68GFFB684J1UY8B4BOP41B86FTBH14D6F"
