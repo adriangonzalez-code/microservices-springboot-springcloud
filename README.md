@@ -2,16 +2,26 @@
 
 ## Run Locally
 
-1. Run the RabbiMQ Image
+1. Run MySQL, before to execute this command, make sure you don't have any MySQL instance running either 3307 and 3308 and 3309 ports
+   > docker run -p 3307:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=accountsdb -d mysql
+   
+   > docker run -p 3308:3306 --name cardsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=cardsdb -d mysql
+   
+   > docker run -p 3309:3306 --name loansdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
 
-    > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+2. Run the RabbiMQ Image
+   > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
-2. Run Config Server API
-3. Run Accounts, Cards and Loans Services
-4. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
-5. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
+3. Run Config Server API
+4. Run Accounts, Cards and Loans Services
+
+**Optional**
+
+5. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
+6. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
    > hookdeck logout
-6. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
+
+7. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
 
 ## Run Docker Compose
 
@@ -20,3 +30,16 @@
 3. Push each image to Docker Hub
 4. Inside the env folder, execute the below command
     > docker compose up -d
+
+5. For stop and destroy the containers
+   > docker compose down
+
+## Resources
+
+### Insomnium Requests
+
+> https://github.com/adriangonzalez-code/insomnium-requests
+
+### Properties of Config Server Repository
+
+> https://github.com/adriangonzalez-code/eazyback-config/tree/master

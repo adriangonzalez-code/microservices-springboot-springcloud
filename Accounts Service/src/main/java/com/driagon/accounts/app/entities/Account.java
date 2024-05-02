@@ -3,6 +3,7 @@ package com.driagon.accounts.app.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Builder
 @ToString
 @Entity
+@Table(name = "accounts")
 public class Account extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1188040260501285039L;

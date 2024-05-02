@@ -1,4 +1,4 @@
-create table if not exists `customer`(
+create table if not exists `customers`(
     `customer_id` int AUTO_INCREMENT PRIMARY KEY,
     `name` varchar(100) NOT NULL,
     `email` varchar(100) NOT NULL,

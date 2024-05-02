@@ -42,8 +42,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -69,6 +69,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -91,7 +95,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>smoothiemx/${project.artifactId}:s6</image>
+						<image>smoothiemx/${project.artifactId}:s8</image>
 					</to>
 				</configuration>
 			</plugin>

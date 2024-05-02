@@ -1,5 +1,6 @@
 package com.driagon.accounts.app.mapper;
 
+import com.driagon.accounts.app.dto.CustomerDetailsDto;
 import com.driagon.accounts.app.dto.CustomerDto;
 import com.driagon.accounts.app.entities.Customer;
 
@@ -11,6 +12,14 @@ public class CustomerMapper {
         customerDto.setMobileNumber(customer.getMobileNumber());
 
         return customerDto;
+    }
+
+    public static CustomerDetailsDto mapToCustomerDetailsDto(Customer customer, CustomerDetailsDto customerDetailsDto) {
+        customerDetailsDto.setName(customer.getName());
+        customerDetailsDto.setEmail(customer.getEmail());
+        customerDetailsDto.setMobileNumber(customer.getMobileNumber());
+
+        return customerDetailsDto;
     }
 
     public static Customer mapToCustomer(CustomerDto customerDto, Customer customer) {
