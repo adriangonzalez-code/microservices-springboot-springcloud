@@ -21,11 +21,19 @@ spring:
     password: "guest"
 
 management:
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
   endpoint:
+    health:
+      probes:
+        enabled: true
     shutdown:
       enabled: true
   info:
@@ -50,3 +58,10 @@ info:
     name: "accounts"
     description: "EazyBank Loans Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      driagon:
+        loansservice:
+          app: DEBUG

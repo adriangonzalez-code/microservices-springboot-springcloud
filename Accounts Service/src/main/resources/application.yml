@@ -24,11 +24,19 @@ server:
   port: 8080
 
 management:
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: "*"
   endpoint:
+    health:
+      probes:
+        enabled: true
     shutdown:
       enabled: true
   info:
@@ -53,3 +61,10 @@ info:
     name: "accounts"
     description: "EazyBank Accounts Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      driagon:
+        accountsservice:
+          app: DEBUG

@@ -13,15 +13,17 @@
    > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
 3. Run Config Server API
-4. Run Accounts, Cards and Loans Services
+4. Run Eureka Server
+5. Run Accounts, Cards and Loans Services
+6. Run Cloud Gateway Server
 
 **Optional**
 
-5. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
-6. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
+7. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
+8. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
    > hookdeck logout
 
-7. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
+9. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
 
 ## Run Docker Compose
 

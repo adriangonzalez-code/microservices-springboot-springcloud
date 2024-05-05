@@ -46,7 +46,7 @@ services:
       service: microservice-db-config
 
   configserver:
-    image: "smoothiemx/config-server:s8"
+    image: "smoothiemx/config-server:s9"
     container_name: configserver-ms
     ports:
       - "8071:8071"
@@ -64,7 +64,7 @@ services:
       service: microservice-base-config
 
   eurekaserver:
-    image: "smoothiemx/eureka-server:s8"
+    image: "smoothiemx/eureka-server:s9"
     container_name: eurekaserver-ms
     ports:
       - "8070:8070"
@@ -84,10 +84,16 @@ services:
       SPRING_APPLICATION_NAME: "eurekaserver"
 
   accounts:
-    image: "smoothiemx/accounts-service:s8"
+    image: "smoothiemx/accounts-service:s9"
     container_name: accounts-ms
     ports:
       - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       accountsdb:
         condition: service_healthy
@@ -103,10 +109,16 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://accountsdb:3306/accountsdb"
 
   cards:
-    image: "smoothiemx/cards-service:s8"
+    image: "smoothiemx/cards-service:s9"
     container_name: cards-ms
     ports:
       - "9000:9000"
+    healthcheck:
+      test: "curl --fail --silent localhost:9000/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       cardsdb:
         condition: service_healthy
@@ -122,10 +134,16 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://cardsdb:3306/cardsdb"
 
   loans:
-    image: "smoothiemx/loans-service:s8"
+    image: "smoothiemx/loans-service:s9"
     container_name: loans-ms
     ports:
       - "8090:8090"
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       loansdb:
         condition: service_healthy
@@ -141,10 +159,16 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
 
   loans1:
-    image: "smoothiemx/loans-service:s8"
+    image: "smoothiemx/loans-service:s9"
     container_name: loans-ms1
     ports:
       - "8091:8090"
+    healthcheck:
+      test: "curl --fail --silent localhost:8090/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       loansdb:
         condition: service_healthy
@@ -158,6 +182,26 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "loans"
       SPRING_DATASOURCE_URL: "jdbc:mysql://loansdb:3306/loansdb"
+
+  gateway:
+    image: "smoothiemx/gateway-server:s9"
+    container_name: gatewayserver-ms
+    ports:
+      - "8072:8072"
+    depends_on:
+      accounts:
+        condition: service_healthy
+      loans:
+        condition: service_healthy
+      loans1:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
 
 networks:
   driagon:
