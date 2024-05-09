@@ -10,20 +10,23 @@
    > docker run -p 3309:3306 --name loansdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
 
 2. Run the RabbiMQ Image
-   > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+   > docker run -it --rm --name rabbitmq -p -d 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
-3. Run Config Server API
-4. Run Eureka Server
-5. Run Accounts, Cards and Loans Services
-6. Run Cloud Gateway Server
+3. Run the Redis Image
+   > docker run -p 6379:6379 --name eazyredis -d redis
+
+4. Run Config Server API
+5. Run Eureka Server
+6. Run Accounts, Cards and Loans Services
+7. Run Cloud Gateway Server
 
 **Optional**
 
-7. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
-8. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
+8. Go to `https://console.hookdeck.com/` and execute the commands of the step 2
+9. If an error message is displayed in the console regarding `401 Unauthorized`, execute the below command
    > hookdeck logout
 
-9. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
+10. Copy the URL displayed in the console within Webhooks section in Config server GitHub repository
 
 ## Run Docker Compose
 
