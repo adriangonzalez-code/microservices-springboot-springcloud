@@ -81,6 +81,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -103,7 +107,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>smoothiemx/${project.artifactId}:s10</image>
+						<image>smoothiemx/${project.artifactId}:s11</image>
 					</to>
 				</configuration>
 			</plugin>

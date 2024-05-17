@@ -25,6 +25,9 @@ spring:
       timeout: 1s
 
 management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
   endpoints:
     web:
       exposure:

@@ -10,7 +10,7 @@
    > docker run -p 3309:3306 --name loansdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
 
 2. Run the RabbiMQ Image
-   > docker run -it --rm --name rabbitmq -p -d 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+   > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 -d rabbitmq:3.13-management
 
 3. Run the Redis Image
    > docker run -p 6379:6379 --name eazyredis -d redis
