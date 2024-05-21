@@ -103,12 +103,12 @@ public class CardController {
             )
     })
     @GetMapping("/fetch")
-    public ResponseEntity<CardDto> fetchCardDetails(@RequestHeader("eazybank-correlation-id") String correlationId,
-                                                     @RequestParam
+    public ResponseEntity<CardDto> fetchCardDetails(@RequestParam
                                                      @Pattern(regexp="(^$|[0-9]{10})",message = "Mobile number must be 10 digits")
                                                      String mobileNumber) {
-        log.debug("EazyBank-correlation-id found: {}", correlationId);
+        log.info("Fetch Card Details REST API start");
         CardDto cardsDto = iCardsService.fetchCard(mobileNumber);
+        log.info("Fetch Card Details REST API end");
         return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
     }
 

@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +33,10 @@ public class CustomersController {
     @ApiResponse(responseCode = "200", description = "HTTP Status OK")
     @GetMapping("/fetchCustomerDetails")
     public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(
-            @RequestHeader("eazybank-correlation-id") String correlationId,
             @RequestParam @Pattern(regexp = "^$|[0-9]{10}", message = "Mobile number must have 10 digits") String mobileNumber) {
-        log.debug("EazyBank-correlation-id found: {}", correlationId);
-        CustomerDetailsDto customerDetailsDto = customerService.fetchCustomerDetails(mobileNumber, correlationId);
+        log.info("Fetch Customer Details REST API started with mobile number: {}", mobileNumber);
+        CustomerDetailsDto customerDetailsDto = customerService.fetchCustomerDetails(mobileNumber);
+        log.info("Fetch Customer Details REST API completed");
         return ResponseEntity.status(HttpStatus.OK).body(customerDetailsDto);
     }
 }
