@@ -16,7 +16,7 @@
    > docker run -p 6379:6379 --name eazyredis -d redis
 
 4. Run KeyCloak
-   > docker run -p 7080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:24.0.4 start-dev
+   > docker run -p 7080:8080 -d -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:24.0.4 start-dev
 
 5. Run Config Server API
 6. Run Eureka Server
@@ -39,7 +39,8 @@ Log In:
 * password: admin
 
 Create a new client id: eazybank-callcenter-cc
-* Roles option only checked
+* Client authentication *checked*
+* Service accounts roles *checked*
 
 Create roles in Realm Roles left menu:
 * ACCOUNTS
