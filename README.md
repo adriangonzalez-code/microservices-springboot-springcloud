@@ -6,7 +6,7 @@
 
 2. Install DockerDesktop in your local device and log in using your account.
 
-3. Run MySQL, before to execute this command, make sure you don't have any MySQL instance running either 3307 and 3308 and 3309 ports
+3. Run below commands, those are to create the MySQL DB, before to execute this command, make sure you don't have any MySQL instance running either 3307 and 3308 and 3309 ports
    > docker run -p 3307:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=accountsdb -d mysql
    
    > docker run -p 3308:3306 --name cardsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=cardsdb -d mysql
