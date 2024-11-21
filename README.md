@@ -2,26 +2,30 @@
 
 ## Run Locally
 
-1. Run MySQL, before to execute this command, make sure you don't have any MySQL instance running either 3307 and 3308 and 3309 ports
+1. Create an account in Docker Hub.
+
+2. Install DockerDesktop in your local device and log in using your account.
+
+3. Run MySQL, before to execute this command, make sure you don't have any MySQL instance running either 3307 and 3308 and 3309 ports
    > docker run -p 3307:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=accountsdb -d mysql
    
    > docker run -p 3308:3306 --name cardsdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=cardsdb -d mysql
    
    > docker run -p 3309:3306 --name loansdb -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=loansdb -d mysql
 
-2. Run the RabbiMQ Image
+4. Run the RabbiMQ Image
    > docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 -d rabbitmq:3.13-management
 
-3. Run the Redis Image
+5. Run the Redis Image
    > docker run -p 6379:6379 --name eazyredis -d redis
 
-4. Run KeyCloak
+6. Run KeyCloak
    > docker run -p 7080:8080 -d -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:24.0.4 start-dev
 
-5. Run Config Server API
-6. Run Eureka Server
-7. Run Accounts, Cards and Loans Services
-8. Run Cloud Gateway Server
+7. Run Config Server API
+8. Run Eureka Server
+9. Run Accounts, Cards and Loans Services
+10. Run Cloud Gateway Server
 
 **Optional**
 
