@@ -2,7 +2,7 @@
 
 ## Run Locally
 
-1. Create an account in Docker Hub.
+1. Create an account in Docker Hub. https://hub.docker.com/
 
 2. Install DockerDesktop in your local device and log in using your account.
 
